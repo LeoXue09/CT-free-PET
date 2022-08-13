@@ -1,0 +1,138 @@
+Due to the limitation of data sharing agreement, full dataset won't be available now, so this demo only include:
+	1. Predicting corrected PET imaging with trained model,
+	2. Evaluating the predicted results to reproduce all the quantitative results in the manuscript.
+In this sense, preprocess.py won't be used for the demo of this version, but will be used to reproduce the trained model when the dataset is available. A more detailed and well-structured demo will be available on github by then.
+
+Required packages are listed below, python3 was used for the development:
+Package              Version
+-------------------- ---------
+absl-py              0.7.1
+astor                0.7.1
+attrs                19.1.0
+backcall             0.1.0
+bleach               3.1.0
+certifi              2020.6.20
+chardet              3.0.4
+ci-info              0.2.0
+click                7.1.2
+cycler               0.10.0
+decorator            4.4.0
+defusedxml           0.6.0
+dicom2nifti          0.0.0
+docopt               0.6.2
+entrypoints          0.3
+etelemetry           0.2.1
+filelock             3.0.12
+gast                 0.2.2
+grpcio               1.20.1
+h5py                 2.9.0
+idna                 2.10
+imageio              2.8.0
+imutils              0.5.3
+ipykernel            5.1.1
+ipython              7.5.0
+ipython-genutils     0.2.0
+ipywidgets           7.4.2
+isodate              0.6.0
+jedi                 0.13.3
+Jinja2               2.10.1
+joblib               0.13.2
+jsonschema           3.0.1
+jupyter              1.0.0
+jupyter-client       5.2.4
+jupyter-console      6.0.0
+jupyter-core         4.4.0
+Keras                2.1.1
+Keras-Applications   1.0.7
+Keras-Preprocessing  1.0.9
+kiwisolver           1.1.0
+lxml                 4.5.2
+Markdown             3.1
+MarkupSafe           1.1.1
+matplotlib           3.0.3
+mistune              0.8.4
+mock                 3.0.5
+nbconvert            5.5.0
+nbformat             4.4.0
+networkx             2.4
+neurdflib            5.0.1
+nibabel              2.4.0
+nipype               1.4.2
+notebook             5.7.8
+numexpr              2.6.9
+numpy                1.16.3
+opencv-python        4.2.0.34
+packaging            20.4
+pandas               0.24.2
+pandocfilters        1.4.2
+parso                0.4.0
+pexpect              4.7.0
+pickleshare          0.7.5
+Pillow               6.0.0
+pip                  20.1.1
+prometheus-client    0.6.0
+prompt-toolkit       2.0.9
+protobuf             3.7.1
+prov                 1.5.3
+ptyprocess           0.6.0
+pydicom              1.3.0
+pydot                1.4.1
+pydotplus            2.0.2
+Pygments             2.4.0
+pykwalify            1.7.0
+pyparsing            2.4.0
+pyradiomics          3.0
+pyrsistent           0.15.2
+python-dateutil      2.8.0
+pytz                 2019.1
+PyWavelets           1.0.0
+PyYAML               5.1
+pyzmq                18.0.1
+qtconsole            4.4.4
+radiomics            0.1
+rdflib               5.0.0
+requests             2.24.0
+scikit-image         0.15.0
+scikit-learn         0.21.1
+scipy                1.2.1
+Send2Trash           1.5.0
+setuptools           39.1.0
+SimpleITK            1.2.4
+simplejson           3.17.2
+six                  1.12.0
+sklearn              0.0
+spectral             0.22.1
+style                1.1.0
+tables               3.5.1
+tensorboard          1.9.0
+tensorflow-estimator 1.13.0
+tensorflow-gpu       1.9.0
+termcolor            1.1.0
+terminado            0.8.2
+testpath             0.4.2
+tf-keras-contrib     2.0.8
+tornado              6.0.2
+traitlets            4.3.2
+traits               6.1.1
+update               0.0.1
+urllib3              1.25.10
+wcwidth              0.1.7
+webencodings         0.5.1
+Werkzeug             0.15.4
+wheel                0.33.4
+widgetsnbextension   3.4.2
+
+To complete the demo, you need to first download the trainded model and example data to start:
+1. Download the compressed file from: https://drive.google.com/file/d/1iv16MERdjjnARB4X4gOyDHazs4koYWqW/view?usp=sharing
+
+2. Replace the "./demo/data" and "./demo/model" directory with the downloaded ones
+   FYI: the "./demo/result" directory contains the expected results, which can be compared with.
+
+3. Then you can use "python3 ./demo/script/resemble.py" to generated AI corrected PET imaging. We only included one example subject to test the demo which is from Shanghai Vision 450 and stored in "./demo/data/SH_Vision/SH_01". And the generated PET imaging of this step would be stored as "./demo/result/SH_Vision/SH_01_ac_gen.nii"
+
+4. Then you can run "python3 ./demo/script/evaluate_resembled.py" to get quantitative analysis, the results of global physical metrics would be stored in "./demo/result/general_result/SH_Visio", and the results like Activity volume histogram and scatter plot would be found in "./demo/result/individual_result/SH_Vision/SH_01"
+
+5. Lastly, to get the radiomics analysis, you can run "python3 ./demo/script/compute_radiomics.py". and the quantitative results would be found in "./demo/result/radiomics/radiomics.csv".
+
+
+
